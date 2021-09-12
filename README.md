@@ -4,6 +4,7 @@
 
 - [react-cra-boilerplate v1.2.2](https://github.com/react-boilerplate/react-boilerplate-cra-template)
 - [storybook v6.3.8](https://storybook.js.org/)
+- [prettier-plugin-organize-imports](https://github.com/simonhaenisch/prettier-plugin-organize-imports)
 
 ## Install
 
