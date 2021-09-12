@@ -13,6 +13,7 @@ inquirer.registerPrompt('directory', require('inquirer-directory'));
 export enum ComponentProptNames {
   componentName = 'componentName',
   path = 'path',
+  storyLayout = 'storyLayout',
   wantMemo = 'wantMemo',
   wantStyledComponents = 'wantStyledComponents',
   wantTranslations = 'wantTranslations',
@@ -36,6 +37,25 @@ export const componentGenerator: PlopGeneratorConfig = {
       message: 'Where do you want it to be created?',
       basePath: `${baseGeneratorPath}`,
     } as any,
+    {
+      type: 'list',
+      name: ComponentProptNames.storyLayout,
+      message: "What kind of layout do you want for it's story meta?",
+      choices: [
+        {
+          name: 'padded (default)',
+          value: 'padded',
+        },
+        {
+          name: 'fullscreen',
+          value: 'fullscreen',
+        },
+        {
+          name: 'centered',
+          value: 'centered',
+        },
+      ],
+    },
     {
       type: 'confirm',
       name: ComponentProptNames.wantMemo,
@@ -82,6 +102,12 @@ export const componentGenerator: PlopGeneratorConfig = {
         type: 'add',
         path: `${componentPath}/index.tsx`,
         templateFile: './component/index.tsx.hbs',
+        abortOnFail: true,
+      },
+      {
+        type: 'add',
+        path: `${componentPath}/index.stories.tsx`,
+        templateFile: './component/index.stories.tsx.hbs',
         abortOnFail: true,
       },
     ];

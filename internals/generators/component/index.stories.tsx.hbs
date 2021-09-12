@@ -1,0 +1,15 @@
+import { Meta, Story } from '@storybook/react';
+import React from 'react';
+import { {{ properCase componentName }}, Props } from './index';
+
+export default {
+title: '{{properCase componentName}}',
+component: {{properCase componentName}},
+parameters: { actions: { argTypesRegex: '^on.*' }, layout: '{{storyLayout}}', },
+} as Meta;
+
+const Template: Story<Props> = (args) => <{{properCase componentName}} {...args} />;
+
+export const Main = Template.bind({});
+Main.args = {
+};
