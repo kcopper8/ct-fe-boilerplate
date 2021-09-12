@@ -13,6 +13,7 @@ inquirer.registerPrompt('directory', require('inquirer-directory'));
 export enum ComponentProptNames {
   componentName = 'componentName',
   path = 'path',
+  wantStory = 'wantStory',
   storyLayout = 'storyLayout',
   wantMemo = 'wantMemo',
   wantStyledComponents = 'wantStyledComponents',
@@ -37,6 +38,12 @@ export const componentGenerator: PlopGeneratorConfig = {
       message: 'Where do you want it to be created?',
       basePath: `${baseGeneratorPath}`,
     } as any,
+    {
+      type: 'confirm',
+      name: ComponentProptNames.wantStory,
+      default: true,
+      message: 'Do you want to create stories.tsx for this component?',
+    },
     {
       type: 'list',
       name: ComponentProptNames.storyLayout,
@@ -104,13 +111,16 @@ export const componentGenerator: PlopGeneratorConfig = {
         templateFile: './component/index.tsx.hbs',
         abortOnFail: true,
       },
-      {
+    ];
+
+    if (answers.wantStory) {
+      actions.push({
         type: 'add',
         path: `${componentPath}/index.stories.tsx`,
         templateFile: './component/index.stories.tsx.hbs',
         abortOnFail: true,
-      },
-    ];
+      });
+    }
 
     if (answers.wantLoadable) {
       actions.push({
