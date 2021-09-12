@@ -39,3 +39,4 @@ npm run generate
 - [react-cra-boilerplate v1.2.2](https://github.com/react-boilerplate/react-boilerplate-cra-template)
 - [storybook v6.3.8](https://storybook.js.org/)
 - generate component with story
+- support for window and npm

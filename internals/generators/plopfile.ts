@@ -2,11 +2,13 @@ import { NodePlopAPI } from 'node-plop';
 import { componentGenerator } from './component';
 import shell from 'shelljs';
 import { sliceGenerator } from './slice';
+import { unixPath } from './utils';
 interface PrettifyCustomActionData {
   path: string;
 }
 
 export default function plop(plop: NodePlopAPI) {
+  plop.setHelper('unixPath', unixPath);
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('slice', sliceGenerator);
 
